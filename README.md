@@ -57,6 +57,22 @@ Configuration
 XML
 ***
 
+GELF Only
+```XML
+<configuration xmlns="http://logging.apache.org/log4php/">
+    <appender name="MyGraylog2Appender" class="LoggerAppenderGraylog2">
+        <param name="host" value="192.168.1.123" />
+        <param name="port" value="12201" />
+        <layout class="LoggerLayoutGelf" />
+    </appender>
+    <root>
+        <level value="DEBUG" />
+        <appender_ref ref="MyGraylog2Appender" />
+    </root>
+</configuration>
+```
+
+GELF + AMQP
 ```XML
 <configuration xmlns="http://logging.apache.org/log4php/">
     <appender name="MyAMQPAppender" class="LoggerAppenderAMQP">

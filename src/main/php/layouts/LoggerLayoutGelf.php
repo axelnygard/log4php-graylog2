@@ -112,8 +112,10 @@ class LoggerLayoutGelf extends LoggerLayout {
             'level'         => $this->getGelfLevel($event->getLevel()),
             'exception'     => $ex,
             // Additional fields
+            '_application_name' => 'log4php',
+            '_facility_num' => '90',
             '_facility'     => $event->getLoggerName(),
-            '_thread'       => $event->getThreadName(),
+            '_process_id'   => $event->getThreadName(),
         );
 
         if ($this->getLocationInfo()) {
