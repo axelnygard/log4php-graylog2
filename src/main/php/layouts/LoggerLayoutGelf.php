@@ -97,6 +97,11 @@ class LoggerLayoutGelf extends LoggerLayout {
      * @return string
      */
     public function format(LoggerLoggingEvent $event) {
+        $ex = null;
+        $ti = $event->getThrowableInformation();
+        if ($ti != null && $ti->getThrowable() != null && $ti->getThrowable() instanceof Exception) {
+            $ex = $ti->getThrowable()->getMessage();
+        }
         $messageAsArray = array(
             // Basic fields
             'version'       => self::GELF_PROTOCOL_VERSION,
@@ -105,6 +110,7 @@ class LoggerLayoutGelf extends LoggerLayout {
             'full_message'  => $this->getFullMessage($event),
             'timestamp'     => $event->getTimeStamp(),
             'level'         => $this->getGelfLevel($event->getLevel()),
+            'exception'     => $ex,
             // Additional fields
             '_facility'     => $event->getLoggerName(),
             '_thread'       => $event->getThreadName(),
