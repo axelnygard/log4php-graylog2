@@ -19,17 +19,17 @@ Installation
 For composer users
 ******************
 
-1. Add to your composer.json: 
+1. Add to your composer.json:
 
  ```JSON
  {
      "require": {
-         "dulyanov/log4php-graylog2": "~1.0"
+         "axelnygard/log4php-graylog2": "~1.0"
      },
      "repositories": [
          {
              "type": "vcs",
-             "url": "https://github.com/d-ulyanov/log4php-graylog2.git"
+             "url": "https://github.com/axelnygard/log4php-graylog2.git"
          }
      ]
  }
